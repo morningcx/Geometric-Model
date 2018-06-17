@@ -204,29 +204,31 @@ public class Display extends Activity implements OnTouchListener,Callback{
 	private Shape createRandomShape() {
 		Shape randomShape = null;
 		Random random=new Random();
-		switch (random.nextInt(6)) {
-		case 1://长方形
+		switch (random.nextInt(8)) {
+		case 0://长方形
 			randomShape=new Cuboid(random.nextInt(500)+200, 
 					                       random.nextInt(500)+200, 
 					                           random.nextInt(500)+200);
 			break;
-		case 0://三棱柱
+		case 1://三棱柱
 			randomShape=new Prism(3,random.nextInt(500)+200, random.nextInt(500)+200);
 			break;
+		case 2:
 		case 3://正多棱柱
 			randomShape=new Prism(random.nextInt(6)+5, 
 					                      random.nextInt(300)+200, 
 					                          random.nextInt(500)+200);
 			break;
-		case 2://三棱锥
+		case 4://三棱锥
 			randomShape=new Pyramid(3, random.nextInt(500)+200, random.nextInt(500)+200);
 			break;
-		case 4://正多棱锥
+		case 5:
+		case 6://正多棱锥
 			randomShape=new Pyramid(random.nextInt(6)+5, 
 					                        random.nextInt(300)+200, 
 					                            random.nextInt(500)+200);
 			break;
-		case 5://正方形
+		case 7://正方形
 			float length=random.nextInt(500)+200;
 			randomShape=new Cuboid(length, length, length);
 		default:
@@ -527,7 +529,7 @@ public class Display extends Activity implements OnTouchListener,Callback{
 		default:
 			break;
 		}
-		//获取个人化数据并赋值
+		//获取个性化数据并赋值
 		int[] styleData=intent.getIntArrayExtra("styleData");
 		background=styleData[0];
 		edgePaint.setColor(styleData[1]);
